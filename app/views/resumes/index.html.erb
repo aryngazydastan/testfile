@@ -1,0 +1,40 @@
+<% if !flash[:notice].blank? %>
+   <div class = "alert alert-info">
+      <%= flash[:notice] %>
+   </div>
+<% end %>
+
+<br />
+
+<%= link_to "Добавить объявление", new_resume_path, class: "btn-sm btn btn-primary" %>
+<br />
+<br />
+
+<table>
+   <thead>
+      <tr>
+         <th>Название</th>
+         <th style=" padding-left: 10px; ">Изображение</th>
+         <th style=" padding-left: 10px; ">Опция</th>
+      </tr>
+   </thead>
+   
+   <tbody>
+      <% @resumes.each do |resume| %>
+         
+         <tr>
+            <td><%= resume.name %></td>
+            
+            <td style=" padding-left: 10px; padding-top: 5px;"><%= image_tag resume.attachment.url, :class=> "img-circular" %></td>
+
+            <td style=" padding-left: 10px; padding-top: 5px;"><%= link_to "Скачать", resume.attachment_url, :class=> "btn-xs btn btn-info" %></td>
+
+          	<td style=" padding-left: 10px; padding-top: 5px;"><%= link_to "Показать", resume_path(resume), class: "btn-xs btn btn-primary" %></td>
+
+            <td style=" padding-left: 10px; padding-top: 5px;"><%= button_to "Удалить",  resume, method: :delete, class: "btn-xs btn btn-danger", confirm: "Are you sure that you wish to delete #{resume.name}?" %></td>
+         </tr>
+         
+      <% end %>
+   </tbody>
+   
+</table>
