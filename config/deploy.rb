@@ -51,7 +51,7 @@ end
 # config valid only for current version of Capistrano
 lock '3.5.0'
 
-set :repo_url, 'https://github.com/aryngazydastan/testfile.git'
+set :repo_url, 'git://github.com/aryngazydastan/testfile.git'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 set :user, 'deployer'
